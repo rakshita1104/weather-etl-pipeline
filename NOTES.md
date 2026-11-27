@@ -17,3 +17,9 @@
 - Six checks (not empty, row count, no nulls, no duplicates, max >= min, value ranges) stop the pipeline on failure.
 - Broke: (write what happened, for example nulls in the newest days, fixed by raising end_lag_days).
 - Learned: all checks run before failing, so I see every problem at once.
+
+## Step 5: Load
+- Loads the clean table into DuckDB with a defined schema and primary key (city, date); full replace inside a transaction.
+- Learned: running it twice gives the same row count, so the pipeline is idempotent. 
+
+ 
